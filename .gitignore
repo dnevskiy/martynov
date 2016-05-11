@@ -1,0 +1,8 @@
+**/*.sass
+.sass-cache/
+css/
+files/
+node_modules/
+bower_components/
+rezerv/
+build/
