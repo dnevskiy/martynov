@@ -1,0 +1,22 @@
+{
+  "name": "martynov",
+  "version": "1.0.0",
+  "description": "site architect",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnevskiy/martynov.git"
+  },
+  "keywords": [
+    "site"
+  ],
+  "author": "NEvskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnevskiy/martynov/issues"
+  },
+  "homepage": "https://github.com/dnevskiy/martynov#readme"
+}
