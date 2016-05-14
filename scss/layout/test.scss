@@ -1,0 +1,99 @@
+/**
+ * Footer
+ * -----------------------------------------------------------------------------
+ */
+@mixin background($type: color, $color: none, $bckg: none) {
+  @if $type == color {
+    background-color: $color;
+  }
+  @else if $type == img {
+    background-image: url($bckg);
+  }
+  @else {
+
+  }
+}
+// soon: background-image, menu bar (navigation menu, footer logo),
+@mixin footer(
+  $footer-widgets:true,
+	//$number-of-columns:3,
+	$widgets-background:#000,
+	$widgets-titles-color:#000,
+	$widgets-body-text-color:#000,
+
+	$social:false,
+	$social-icons-color:$color,
+	$social-icons-hover-color:#fff,
+	$social-size: 16px,
+
+	$background-color:#000,
+	$color:$color,
+	$spacing-top:30px,
+	$spacing-bottom:40px,
+	$position:none
+	) {
+  .footer {
+
+
+	@include background(color,#fff,none);
+	a {
+		color: #fff;
+	  &:hover { 
+	    color: #fff;
+	  }
+    &:not(.icon,.button) {
+      border-bottom: 1px solid #fff;
+      &:hover {
+        border-bottom-color: #fff;
+      }
+    }
+	}
+
+    background-color: $background-color;
+    padding-top: $spacing-top;
+		padding-bottom: $spacing-bottom;
+		color: $color;
+		@if $position != none {
+			float: $position;
+		}
+		@if $footer-widgets == true {
+		  &_widgets {
+		  	background-color: $background-color;
+		  	color: $widgets-body-text-color;
+			  &_title {
+			  	color: $widgets-titles-color; 
+			  }			
+		  }	
+		}
+		@if $social == true {
+		  &_social {
+		  	color: $social-icons-color;
+		  	size: $social-size;
+		  	&:hover {
+		  		color: $social-icons-hover-color;
+		  	}
+		  }			
+		}
+  }
+}
+
+$footer: (
+	footer-widgets:true,
+	//number-of-columns:3,
+	widgets-background:#000,
+	widgets-titles-color:#000,
+	widgets-body-text-color:#000,
+
+	social:true,
+	social-icons-color:#000,
+	social-icons-hover-color:#fff,
+	social-size: 16px,
+
+	background-color:#fff,
+	color:#fff,
+	spacing-top:40px,
+	spacing-bottom:30px,
+	position: left
+	);
+
+@include footer($footer...);

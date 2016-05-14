@@ -1,11 +1,12 @@
 var gulp = require('gulp'),
-	//php2html = require("gulp-php2html"),
-	rimraf = require('rimraf'),
+	php2html = require("gulp-php2html"),
+	//rimraf = require('rimraf'),
+    del = require('del'),
 	watch = require('gulp-watch'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
-    //rigger = require('gulp-rigger'),
+    rigger = require('gulp-rigger'),
     cssmin = require('gulp-clean-css'),
     //imagemin = require('gulp-imagemin'),
     //pngquant = require('imagemin-pngquant'),
@@ -22,7 +23,7 @@ var path = {
     src: {
         html: 'index.php',
         js: 'js/main.js',
-        style: 'sass/main.scss',
+        style: 'scss/main.scss',
         img: 'img/**/*.*',
         fonts: 'fonts/**/*.*'
     },
@@ -43,7 +44,7 @@ var config = {
     tunnel: true,
     host: 'localhost',
     port: 3000,
-    logPrefix: "rir"
+    logPrefix: "martynov"
 };
 
 gulp.task('webserver', function () {
@@ -51,7 +52,7 @@ gulp.task('webserver', function () {
 });
 
 gulp.task('clean', function (cb) {
-    rimraf(path.clean, cb);
+    del(path.clean, cb);
 });
 
 gulp.task('html:build', function () {
@@ -63,7 +64,7 @@ gulp.task('html:build', function () {
 
 gulp.task('js:build', function () {
     gulp.src(path.src.js) 
-        //.pipe(rigger()) 
+        .pipe(rigger()) 
         .pipe(sourcemaps.init()) 
         .pipe(uglify()) 
         .pipe(sourcemaps.write()) 
@@ -75,7 +76,7 @@ gulp.task('style:build', function () {
     gulp.src(path.src.style) 
         .pipe(sourcemaps.init())
         .pipe(sass({
-            includePaths: ['sass/'],
+            includePaths: ['scss/'],
             outputStyle: 'compressed',
             sourceMap: true,
             errLogToConsole: true
